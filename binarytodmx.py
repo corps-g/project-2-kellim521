@@ -41,12 +41,11 @@ class DMX_binary:
         file.write(bHeader)
         
         data = DMX.DMXMusic(self.wavfile)
-        frame = np.array([])
         
         #write frames
         for i in range(self.nFrames):
             # retrieves frame data using given function,
-            frame = np.append(frame,(data.tcolor(self.tStart+i*self.tStep)))
+            frame = np.array(data.tcolor(self.tStart+i*self.tStep))
         
             # byte array to hold current frame
             bFrame = bytearray(545)
