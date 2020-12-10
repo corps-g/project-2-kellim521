@@ -45,13 +45,13 @@ class DMX_binary:
         #write frames
         for i in range(self.nFrames):
             # retrieves frame data using given function,
-            frame = np.array(data.tcolor(self.tStart+i*self.tStep))
+            frame = data.tcolor(self.tStart+i*self.tStep)
         
             # byte array to hold current frame
             bFrame = bytearray(545)
             
             # convert the frame data to binary and write each byte
-            for j in range(len(frame)):
+            for j in range(frame.size):
                 bFrame[j:j+1] = int(frame[j]).to_bytes(1, byteorder='little')
             
             #write finished frame to file
