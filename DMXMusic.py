@@ -152,7 +152,7 @@ class DMXMusic:
         """
         
         if t < self.times[0] or t > self.times[-1]:
-            return 0
+            return np.zeros(512)
         else:
             return self.frame_data[np.where(self.times == self.times[self.times <= t][-1])[0][0]]
         
